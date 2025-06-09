@@ -17,7 +17,9 @@ RUN pnpm install
 COPY . .
 
 # Build the app
-RUN VITE_API_BASE_URL=$VITE_API_BASE_URL pnpm build
+# ✅ Exibe o valor da env e embute ela no build
+RUN echo "🔧 VITE_API_BASE_URL=$VITE_API_BASE_URL" \
+  && VITE_API_BASE_URL=$VITE_API_BASE_URL pnpm build
 
 # Production stage
 FROM nginx:alpine
