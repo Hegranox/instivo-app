@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   instivo-frontend:
     build:
@@ -7,6 +5,12 @@ services:
       dockerfile: Dockerfile
     container_name: instivo-frontend
     ports:
-      - "3000:3000"
+      - "3000:80"
     environment:
       - VITE_API_BASE_URL=http://localhost:3333
+    networks:
+      - instivo-network
+
+networks:
+  instivo-network:
+    driver: bridge
