@@ -16,11 +16,8 @@ RUN pnpm install
 # Copy source code
 COPY . .
 
-ARG VITE_API_BASE_URL
-ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
-
 # Build the app
-RUN pnpm build
+RUN VITE_API_BASE_URL=$VITE_API_BASE_URL pnpm build
 
 # Production stage
 FROM nginx:alpine
